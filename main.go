@@ -3,10 +3,21 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"net"
 )
 
 func main() {
+
+	response, err := GET("https://jsonplaceholder.typicode.com/todos/1")
+
+	if err != nil {
+		//
+	}
+	body, err := io.ReadAll(response.Body)
+
+	println(string(body), "body")
+
 	listener, error := net.Listen("tcp", ":8080")
 
 	if error != nil {
